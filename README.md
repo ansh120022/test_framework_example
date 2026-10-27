@@ -27,6 +27,8 @@ There is a set of ready-made fixtures for testing permissions. Pass one as a par
 - `anonymousSession`: no token at all
 - `noGistsScopeSession`: a valid token without gist permission (`NO_GISTS_ACCESS_TOKEN`)
 
+Security considered: the token values, which are sent as HTTP headers, are masked in job logs and reports.
+
 ## Fixtures and cleanup
 
 Gists created through `session.create()` or the builder are tracked and automatically removed.
@@ -58,7 +60,7 @@ Add a `.env` file:
 
 ```
 GISTS_TOKEN=...              # token with gist access
-NO_GISTS_ACCESS_TOKEN=...    # optional, classic token without the gist scope, for the permission tests
+NO_GISTS_ACCESS_TOKEN=...    # optional, fine-grained token without the Gists permission, for the permission tests
 ```
 
 Then:
@@ -72,11 +74,5 @@ npm run report      # see report
 
 ## CI
 
-The **Playwright tests** workflow is started manually from the Actions tab (Run workflow). The report of the latest run is published to GitHub Pages: https://ansh120022.github.io/test_framework_example/
-
-One-time setup:
-
-- add `GISTS_TOKEN` and `NO_GISTS_ACCESS_TOKEN` in Settings → Secrets and variables → Actions
-- set Settings → Pages → Source to **GitHub Actions**
-
-Tokens are masked as `***` in the report (`reporters/mask-secrets.ts`), so it is safe to publish.
+The tests are started on Pull Request. 
+The report of the latest run is published here: https://ansh120022.github.io/test_framework_example/
