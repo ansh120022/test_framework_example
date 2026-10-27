@@ -9,7 +9,7 @@ export default defineConfig({
   retries: 0,
   workers: 2,
   maxFailures: 2,
-  reporter: [['list'], ['html', { open: 'never' }]],
+  reporter: [['./reporters/mask-secrets.ts'], ['list'], ['html', { open: 'never' }]],
   use: {
     baseURL: 'https://api.github.com',
   },
