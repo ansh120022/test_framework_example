@@ -27,6 +27,8 @@ There is a set of ready-made fixtures for testing permissions. Pass one as a par
 - `anonymousSession`: no token at all
 - `noGistsScopeSession`: a valid token without gist permission (`NO_GISTS_ACCESS_TOKEN`)
 
+Security considered: the token values, which are sent as HTTP headers, are masked in job logs and reports.
+
 ## Fixtures and cleanup
 
 Gists created through `session.create()` or the builder are tracked and automatically removed.
@@ -69,3 +71,8 @@ npm run test:api
 npm run test:ui
 npm run report      # see report
 ```
+
+## CI
+
+The tests are started on Pull Request. 
+The report of the latest run is published here: https://ansh120022.github.io/test_framework_example/

@@ -57,8 +57,3 @@ export const GistSchema = z.object({
 export type Gist = z.infer<typeof GistSchema>;
 export type GistFile = z.infer<typeof GistFileSchema>;
 export type GistOwner = z.infer<typeof GistOwnerSchema>;
-
-class GistSchema {
-    truncated!: boolean;
-
-} 
