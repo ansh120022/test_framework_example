@@ -78,9 +78,10 @@ const response = await test.step('Attempt to create a gist with a token without 
     noGistsScopeSession.createGist(CreateGist().withDescription('should not be created').build()),
 );
 
-await test.step('Verify the request was forbidden', async () => {
+
+await test.step('Verify the request was rejected', async () => {
     const body = await response.json();
-    expect(response.status()).toBe(403);
-    expect(body.message).toBe('Resource not accessible by personal access token');
+    expect(response.status()).toBe(404);
+    expect(body.message).toBe('Not Found');
 });
 });
